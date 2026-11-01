@@ -1,0 +1,837 @@
+{
+    "info": {
+        "name": "API Pagos en Custodia - InWork",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": "Todas las rutas /api piden el token de la API principal (FastAPI). Primero ejecuta uno de los 'Login como ...' de la carpeta 0: el token se guarda solo en la variable {{token}}. Contrasena de todos los usuarios de prueba: Inwork2026*"
+    },
+    "auth": {
+        "type": "bearer",
+        "bearer": [
+            {
+                "key": "token",
+                "value": "{{token}}",
+                "type": "string"
+            }
+        ]
+    },
+    "item": [
+        {
+            "name": "0. Inicio",
+            "item": [
+                {
+                    "name": "Estado de la API",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                ""
+                            ]
+                        },
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    }
+                },
+                {
+                    "name": "Probar conexion BD",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/prueba-db",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "prueba-db"
+                            ]
+                        },
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    }
+                },
+                {
+                    "name": "Login como administrador",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "// Guarda el token para usarlo en las demas peticiones",
+                                    "pm.collectionVariables.set('token', pm.response.json().access_token);"
+                                ]
+                            }
+                        }
+                    ],
+                    "request": {
+                        "auth": {
+                            "type": "noauth"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{inwork_url}}/auth/login",
+                            "host": [
+                                "{{inwork_url}}"
+                            ],
+                            "path": [
+                                "auth",
+                                "login"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"correo\": \"sebastian.rojas@inwork.com.co\",\n  \"password\": \"Inwork2026*\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Login como cliente (Luis Fernando)",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "// Guarda el token para usarlo en las demas peticiones",
+                                    "pm.collectionVariables.set('token', pm.response.json().access_token);"
+                                ]
+                            }
+                        }
+                    ],
+                    "request": {
+                        "auth": {
+                            "type": "noauth"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{inwork_url}}/auth/login",
+                            "host": [
+                                "{{inwork_url}}"
+                            ],
+                            "path": [
+                                "auth",
+                                "login"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"correo\": \"luisf.delahoz@gmail.com\",\n  \"password\": \"Inwork2026*\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Login como trabajador (Yesid)",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "// Guarda el token para usarlo en las demas peticiones",
+                                    "pm.collectionVariables.set('token', pm.response.json().access_token);"
+                                ]
+                            }
+                        }
+                    ],
+                    "request": {
+                        "auth": {
+                            "type": "noauth"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{inwork_url}}/auth/login",
+                            "host": [
+                                "{{inwork_url}}"
+                            ],
+                            "path": [
+                                "auth",
+                                "login"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"correo\": \"yesid.cantillo@gmail.com\",\n  \"password\": \"Inwork2026*\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Login como cliente (Valentina)",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "// Guarda el token para usarlo en las demas peticiones",
+                                    "pm.collectionVariables.set('token', pm.response.json().access_token);"
+                                ]
+                            }
+                        }
+                    ],
+                    "request": {
+                        "auth": {
+                            "type": "noauth"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{inwork_url}}/auth/login",
+                            "host": [
+                                "{{inwork_url}}"
+                            ],
+                            "path": [
+                                "auth",
+                                "login"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"correo\": \"valentina.mendoza93@gmail.com\",\n  \"password\": \"Inwork2026*\"\n}"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "1. Cuentas de pago",
+            "item": [
+                {
+                    "name": "Listar cuentas",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/cuentas",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "cuentas"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Buscar cuentas por correo (administrador)",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/cuentas?correo=kevin.escorcia.elec@gmail.com",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "cuentas"
+                            ],
+                            "query": [
+                                {
+                                    "key": "correo",
+                                    "value": "kevin.escorcia.elec@gmail.com"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Obtener cuenta",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/cuentas/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "cuentas",
+                                "1"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Crear cuenta (se registra al correo del token)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/cuentas",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "cuentas"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"titular\": \"Yesid Cantillo Barraza\",\n  \"tipo_cuenta\": \"bancolombia\",\n  \"numero_cuenta\": \"56231478902\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Actualizar cuenta",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/cuentas/2",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "cuentas",
+                                "2"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"titular\": \"Yesid A. Cantillo Barraza\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Eliminar cuenta",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/cuentas/2",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "cuentas",
+                                "2"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "2. Custodias",
+            "item": [
+                {
+                    "name": "Listar custodias (administrador)",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/custodias",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "custodias"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Listar por estado (administrador)",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/custodias?estado_custodia=asegurado",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "custodias"
+                            ],
+                            "query": [
+                                {
+                                    "key": "estado_custodia",
+                                    "value": "asegurado"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Custodias del cliente (aviso de pago)",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/custodias/cliente/luisf.delahoz@gmail.com",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "custodias",
+                                "cliente",
+                                "luisf.delahoz@gmail.com"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Obtener custodia",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/custodias/12",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "custodias",
+                                "12"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Custodia de un contrato de InWork",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/custodias/contratacion/12",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "custodias",
+                                "contratacion",
+                                "12"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Crear custodia (administrador; normalmente la crea la API de InWork)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/custodias",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "custodias"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"id_contratacion\": 21,\n  \"correo_cliente\": \"camila.ariza@gmail.com\",\n  \"correo_trabajador\": \"wilmer.navarro.pintor@gmail.com\",\n  \"monto\": 100000\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Actualizar custodia (administrador, solo antes de pagar)",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/custodias/15",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "custodias",
+                                "15"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"monto\": 370000\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Eliminar custodia (administrador, solo si no se ha pagado)",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/custodias/15",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "custodias",
+                                "15"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "3. Flujo del pago",
+            "item": [
+                {
+                    "name": "1) Cliente paga a InWork (login como Luis Fernando)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/custodias/12/depositar",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "custodias",
+                                "12",
+                                "depositar"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"metodo_pago\": \"nequi\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "2) Aviso al trabajador (login como Yesid)",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/custodias/trabajador/yesid.cantillo@gmail.com",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "custodias",
+                                "trabajador",
+                                "yesid.cantillo@gmail.com"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "3) Cliente confirma (login como Luis Fernando)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/custodias/12/confirmar",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "custodias",
+                                "12",
+                                "confirmar"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "4) Trabajador confirma y se libera el pago (login como Yesid)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/custodias/12/confirmar",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "custodias",
+                                "12",
+                                "confirmar"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Abrir disputa (login como Valentina)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/custodias/14/disputa",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "custodias",
+                                "14",
+                                "disputa"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"motivo\": \"La limpieza no se hizo completa\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Resolver disputa (administrador)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/custodias/17/resolver",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "custodias",
+                                "17",
+                                "resolver"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"decision\": \"liberar\"\n}"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "4. Pagos (administrador o moderador)",
+            "item": [
+                {
+                    "name": "Listar pagos",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/pagos",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "pagos"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Pagos de una custodia",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/pagos?id_custodia=1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "pagos"
+                            ],
+                            "query": [
+                                {
+                                    "key": "id_custodia",
+                                    "value": "1"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Obtener pago",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/pagos/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "pagos",
+                                "1"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Crear pago manual",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/pagos",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "pagos"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"id_custodia\": 11,\n  \"tipo_pago\": \"deposito\",\n  \"monto\": 5000,\n  \"metodo_pago\": \"efectivo\",\n  \"descripcion\": \"Registro manual de prueba\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Actualizar pago",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/pagos/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "pagos",
+                                "1"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"descripcion\": \"Pago por PSE confirmado\"\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Eliminar pago",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/pagos/5",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "pagos",
+                                "5"
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "http://localhost:3000"
+        },
+        {
+            "key": "inwork_url",
+            "value": "http://localhost:8000"
+        },
+        {
+            "key": "token",
+            "value": ""
+        }
+    ]
+}
